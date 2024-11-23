@@ -1,0 +1,135 @@
+<!doctype html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Convert .doc to .pdf</title>
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #b7d0dc, #5f81d0); /* Fun gradient background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+
+    header {
+        margin: 0; /* Removes margin to cover full width */
+        text-align: center;
+        background-color: #0288d1;
+        color: white;
+        padding: 1.5rem 1rem;
+        width: 100%; /* Ensures header spans full width */
+        box-sizing: border-box;
+    }
+
+    h1 {
+        text-align: center; /* Center-aligns the title */
+        color: #ffffff; /* Header color */
+        font-size: 4rem; /* Larger font size */
+        font-weight: bold;
+        margin: 20px 0; /* Adds some space around the title */
+        margin-bottom: 10px ;
+    }
+
+    p {
+        text-align: center; /* Center-aligns the paragraph */
+        font-size: 1.8rem; /* Larger font size for better readability */
+        color: #e8dcdc; /* Slightly dark gray color for the text */
+        margin-bottom: 40px; /* Adds space below the paragraph */
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    form {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Slightly increased shadow */
+        padding: 2rem;
+        width: 100%;
+        max-width: 500px; /* Wider form box for rectangle appearance */
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    form input[type="file"] {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid #0288d1;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    form input[type="submit"] {
+        background-color: #447995;
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    form input[type="submit"]:hover {
+        background-color: #0277bd;
+    }
+    
+    footer {
+        text-align: center;
+        background: #0288d1;
+        color: white;
+        padding: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    footer a {
+        color: #ffcc80;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    footer p {
+        margin: 0.5rem 0;
+    }
+
+    </style>
+</head>
+
+<body>
+    
+    <h1>Convert <code>word</code> to <code>pdf</code></h1>
+    <p>
+        Convert your word document to pdfs.
+    </p>
+    <main>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">Upload your file</label>
+            <input type="file" name="file" id="file">
+            <input type="submit" value="Upload">
+        </form>
+    </main>
+</body>

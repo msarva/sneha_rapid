@@ -1,0 +1,42 @@
+name: Build and Deploy Docker Image
+
+on:
+  push:
+    branches:
+      - main   # Adjust to the branch you want to trigger the action
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  build-and-push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Google Cloud SDK
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        version: "latest"
+        service_account_key: ${{ secrets.GCP_SA_KEY }} # Add this secret in GitHub
+        project_id: "your-google-project-id"          # Replace with your Google Cloud Project ID
+
+    # Step 3: Authenticate Docker with GCR/Artifact Registry
+    - name: Authenticate Docker
+      run: |
+        gcloud auth configure-docker --quiet
+
+    # Step 4: Build Docker Image
+    - name: Build Docker Image
+      run: |
+        IMAGE_NAME="gcr.io/your-google-project-id/your-image-name:latest"
+        docker build -t $IMAGE_NAME .
+
+    # Step 5: Push Docker Image (Optional)
+    - name: Push Docker Image
+      run: |
+        IMAGE_NAME="gcr.io/your-google-project-id/your-image-name:latest"
+        docker push $IMAGE_NAME
